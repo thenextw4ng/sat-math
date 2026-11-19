@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101b2d" />
+  <title>SAT Math — Interactive Practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top"><span class="brand-mark">∑</span><span><strong>SAT MATH</strong><small>INTERACTIVE PRACTICE</small></span></a>
+      <div class="sidebar-label">QUESTION BANK</div>
+      <label class="field-label" for="domainFilter">Domain</label>
+      <select id="domainFilter" class="select-field"><option value="all">All domains</option></select>
+      <label class="field-label" for="modeFilter">Practice mode</label>
+      <select id="modeFilter" class="select-field">
+        <option value="all">All questions</option><option value="unanswered">Unanswered</option><option value="incorrect">Incorrect only</option><option value="bookmarked">Bookmarked</option>
+      </select>
+      <label class="field-label" for="skillSearch">Find a skill or ID</label>
+      <input id="skillSearch" class="text-field" type="search" placeholder="e.g. Linear functions" />
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-label">YOUR PROGRESS</div>
+      <div class="side-stat"><span>Attempted</span><strong id="sideAttempted">0 / 610</strong></div>
+      <div class="mini-track"><span id="sideProgress"></span></div>
+      <div class="side-stat"><span>Accuracy</span><strong id="sideAccuracy">—</strong></div>
+      <div class="side-stat"><span>Bookmarked</span><strong id="sideBookmarked">0</strong></div>
+      <button id="resetProgress" class="text-button">Reset progress</button>
+      <div class="sidebar-bottom"><div class="pdf-status-dot" id="pdfStatusDot"></div><div><strong id="pdfStatusTitle">PDF not loaded</strong><small id="pdfStatusText">Choose your licensed question-bank PDF.</small></div></div>
+    </aside>
+    <main class="main" id="top">
+      <header class="topbar">
+        <div><div class="eyebrow">DIGITAL SAT · MATH</div><h1>Practice. Analyze. Improve.</h1></div>
+        <div class="top-actions">
+          <label class="upload-button" for="pdfFile"><span>＋</span> Load question PDF</label>
+          <input id="pdfFile" type="file" accept="application/pdf,.pdf" hidden />
+          <a class="desmos-button" href="https://www.desmos.com/calculator?lang=id" target="_blank" rel="noreferrer">Open Desmos ↗</a>
+        </div>
+      </header>
+      <section class="metrics-grid">
+        <article class="metric-card"><span class="metric-label">QUESTIONS IN BANK</span><strong id="metricTotal">610</strong><small>From your uploaded PDF</small></article>
+        <article class="metric-card"><span class="metric-label">ATTEMPTED</span><strong id="metricAttempted">0</strong><small id="metricRemaining">610 remaining</small></article>
+        <article class="metric-card"><span class="metric-label">CORRECT</span><strong id="metricCorrect">0</strong><small>Across submitted answers</small></article>
+        <article class="metric-card"><span class="metric-label">ACCURACY</span><strong id="metricAccuracy">—</strong><small>Correct / attempted</small></article>
+      </section>
+      <section class="workspace">
+        <div class="question-toolbar">
+          <div class="question-meta"><span class="question-number" id="questionNumber">Question 1 / 610</span><span class="tag" id="domainTag">Algebra</span><span class="tag tag-muted" id="difficultyTag">Hard</span></div>
+          <div class="toolbar-actions">
+            <button id="bookmarkBtn" class="icon-button" title="Bookmark this question">☆</button>
+            <button id="randomBtn" class="quiet-button">Random</button>
+            <button id="prevBtn" class="nav-button" aria-label="Previous question">←</button>
+            <button id="nextBtn" class="nav-button" aria-label="Next question">→</button>
+          </div>
+        </div>
+        <div class="skill-row"><span class="skill-label">SKILL</span><span id="skillText">Linear equations in one variable</span><span class="question-id" id="questionId">ID: —</span></div>
+        <div class="question-card">
+          <div class="question-card-head"><div><span class="section-kicker">QUESTION</span><h2>Read the problem carefully</h2></div><span class="source-page" id="sourcePage">PDF page —</span></div>
+          <div class="pdf-preview" id="pdfPreview">
+            <div class="pdf-placeholder" id="pdfPlaceholder"><div class="placeholder-icon">▧</div><strong>Load your question-bank PDF</strong><p>The original question page will appear here. The answer key and rationale area are clipped from the question view.</p><label class="upload-button upload-button-small" for="pdfFile">Choose PDF</label></div>
+            <canvas id="questionCanvas" aria-label="Question rendered from the selected PDF" hidden></canvas>
+          </div>
+          <div class="question-card-foot"><span>Source question preserved from your local PDF</span><span id="renderStatus"></span></div>
+        </div>
+        <section class="answer-card">
+          <div class="answer-card-head"><div><span class="section-kicker">YOUR ANSWER</span><h2>Select an option or enter a value</h2></div><span class="answer-type" id="answerType">GRID-IN</span></div>
+          <div id="mcqArea" class="choice-grid" hidden>
+            <button class="choice-button" data-choice="A"><span>A</span><small>Option A</small></button><button class="choice-button" data-choice="B"><span>B</span><small>Option B</small></button>
+            <button class="choice-button" data-choice="C"><span>C</span><small>Option C</small></button><button class="choice-button" data-choice="D"><span>D</span><small>Option D</small></button>
+          </div>
+          <div id="sprArea" class="spr-area"><input id="sprInput" type="text" inputmode="decimal" autocomplete="off" placeholder="Enter your answer (e.g. 3/2 or 1.5)" /><p>Fractions and decimal equivalents are accepted when they match the source key.</p></div>
+          <div class="answer-actions"><button id="submitBtn" class="primary-button">Submit answer</button><button id="clearBtn" class="secondary-button">Clear response</button><span id="answerFeedback" class="answer-feedback" aria-live="polite"></span></div>
+        </section>
+        <section id="solutionPanel" class="solution-panel" hidden>
+          <div class="solution-head"><div><span class="section-kicker">SOLUTION & DESMOS WORKFLOW</span><h2 id="solutionTitle">Pembahasan</h2></div><span class="solution-status" id="solutionStatus">ANSWER CHECKED</span></div>
+          <div id="solutionBody"></div>
+          <div class="solution-actions"><button id="copyPromptBtn" class="secondary-button">Copy Indonesian + Desmos explanation prompt</button><a class="desmos-button" href="https://www.desmos.com/calculator?lang=id" target="_blank" rel="noreferrer">Open Desmos ↗</a></div>
+        </section>
+        <div class="bottom-nav"><button id="prevBottomBtn" class="secondary-button">← Previous</button><span id="filteredCount">Showing 610 questions</span><button id="nextBottomBtn" class="primary-button">Next question →</button></div>
+      </section>
+      <footer class="footer-note">Local progress is saved in this browser. Your source PDF is read locally and is not uploaded by this app.</footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
