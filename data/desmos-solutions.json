@@ -1,0 +1,64 @@
+{
+  "ac472881": {
+    "title": "Persamaan identik dengan dua konstanta",
+    "explanation": "Agar persamaan linear berlaku untuk setiap nilai x, kedua ruas harus membentuk garis yang sama persis. Karena itu, kemiringan kedua garis harus sama dan titik potong sumbu-y juga harus sama. Kedua syarat ini dapat dipetakan sebagai persamaan pada bidang parameter Desmos.",
+    "steps": [
+      {"title":"Samakan kemiringan kedua ruas","text":"Ruas kiri mempunyai kemiringan 3, sedangkan ruas kanan mempunyai kemiringan r. Pada bidang parameter, gunakan sumbu-x untuk mewakili s dan sumbu-y untuk mewakili r. Syarat kemiringan sama menjadi r = 3.","expressions":["y=3"],"expected":"Garis horizontal pada y = 3."},
+      {"title":"Samakan titik potong sumbu-y","text":"Titik potong ruas kiri adalah 7 − s/13. Titik potong ruas kanan adalah −8r. Karena keduanya harus sama, gunakan x untuk mewakili s dan y untuk mewakili r.","expressions":["7-x/13=-8y"],"expected":"Kedua grafik berpotongan di (403, 3)."},
+      {"title":"Baca nilai parameter yang diminta","text":"Koordinat-x titik potong menyatakan nilai s, sedangkan koordinat-y menyatakan nilai r. Jadi nilai s adalah 403."},
+      {"title":"Verifikasi kedua grafik berimpit","text":"Masukkan nilai parameter yang ditemukan ke fungsi masing-masing ruas. Kedua ekspresi menghasilkan garis yang sama.","expressions":["f(x)=(12x+28)/4-403/13","g(x)=3(x-8)"],"expected":"f(x) dan g(x) saling menutupi pada seluruh domain."}
+    ],
+    "final":"Jawaban: 403. Desmos memperlihatkan pasangan parameter (s, r) = (403, 3), lalu verifikasi kedua ruas sebagai grafik yang berimpit."
+  },
+  "3f5a3602": {
+    "title":"Membentuk sistem persamaan dari dua garis pada grafik",
+    "explanation":"Setiap garis dapat ditentukan dari dua titik yang dilaluinya. Dari grafik sumber, garis pertama melalui (8, 0) dan (3, 4), sedangkan garis kedua melalui (8, 0) dan (3, 2). Desmos memperoleh model linear dari pasangan titik tersebut melalui tabel dan regresi linear.",
+    "steps":[
+      {"title":"Masukkan dua titik untuk garis pertama","text":"Buat tabel di Desmos. Masukkan x₁ = 8, 3 dan y₁ = 0, 4. Titik-titik ini dibaca dari perpotongan garis dengan kisi pada gambar soal.","expressions":["(8,0)","(3,4)"],"expected":"Dua titik muncul pada bidang koordinat."},
+      {"title":"Bentuk model linear dari tabel pertama","text":"Tambahkan regresi linear. Desmos menghitung kemiringan dan titik potong sumbu-y.","expressions":["y_1~m_1 x_1+b_1"],"expected":"m₁ = −0.8 dan b₁ = 6.4; modelnya y = −0.8x + 6.4."},
+      {"title":"Masukkan dua titik untuk garis kedua","text":"Buat tabel kedua dengan pasangan (8, 0) dan (3, 2), lalu jalankan regresi linear pada tabel tersebut.","expressions":["(8,0)","(3,2)","y_2~m_2 x_2+b_2"],"expected":"m₂ = −0.4 dan b₂ = 3.2; modelnya y = −0.4x + 3.2."},
+      {"title":"Cocokkan dengan pilihan","text":"Garis pertama setara dengan −8x − 10y = −64, sedangkan garis kedua setara dengan 4x + 10y = 32. Pasangan tersebut cocok dengan pilihan D."}
+    ],
+    "final":"Jawaban: D. Kedua model linear dari tabel titik cocok dengan pasangan persamaan pada opsi D."
+  },
+  "edc1b7b7": {
+    "title":"Menemukan kombinasi linear dari titik potong dua garis",
+    "explanation":"Cari titik potong dua garis, lalu evaluasi ekspresi 8x + 7y pada titik tersebut. Desmos menyelesaikan bagian pertama melalui perpotongan grafik.",
+    "steps":[
+      {"title":"Masukkan persamaan pertama","text":"Masukkan persamaan pertama dalam bentuk setara agar Desmos menggambarkan garis pertama.","expressions":["2(8x)+4(7y)=12","16x+28y=12"],"expected":"Garis pertama muncul pada bidang koordinat."},
+      {"title":"Masukkan persamaan kedua","text":"Tambahkan persamaan kedua. Titik perpotongan kedua garis adalah solusi (x, y) dari sistem.","expressions":["-2(8x)+4(7y)=12","-16x+28y=12"],"expected":"Titik potong berada di (0, 3/7)."},
+      {"title":"Evaluasi ekspresi yang diminta","text":"Gunakan koordinat titik potong pada ekspresi target. Desmos menghitung nilainya secara langsung.","expressions":["8(0)+7(3/7)"],"expected":"Nilai ekspresi = 3."}
+    ],
+    "final":"Jawaban: 3. Nilai tersebut diperoleh dengan mengevaluasi 8x + 7y pada titik potong kedua grafik."
+  },
+  "3008cfc3": {
+    "title":"Menentukan intersep dari tabel titik dan informasi y-intercept",
+    "explanation":"Titik yang disebut sebagai y-intercept harus mempunyai koordinat-x sama dengan nol. Informasi bahwa intersepnya adalah (k − 5, b) langsung menentukan k. Setelah itu, dua titik numerik dapat dimasukkan ke tabel Desmos untuk membentuk garis dan membaca intersep-y.",
+    "steps":[
+      {"title":"Gunakan definisi y-intercept pada Desmos","text":"Pada y-intercept, x = 0. Dengan x pada bidang Desmos mewakili parameter k, grafik persamaan k − 5 = 0 akan berpotongan dengan sumbu-x di k = 5.","expressions":["x-5=0","y=0"],"expected":"Titik potong parameter berada pada x = 5; jadi k = 5."},
+      {"title":"Masukkan dua titik ke tabel","text":"Ganti k dengan 5. Dua titik pada garis menjadi (5, 13) dan (12, −15). Masukkan koordinat tersebut ke tabel Desmos.","expressions":["(5,13)","(12,-15)"],"expected":"Kedua titik terletak pada satu garis."},
+      {"title":"Gunakan regresi linear untuk memperoleh intersep","text":"Tambahkan model regresi linear pada tabel. Koefisien b pada model y = mx + b adalah intersep-y.","expressions":["y_1~m x_1+b"],"expected":"Desmos menghasilkan m = −4 dan b = 33."}
+    ],
+    "final":"Jawaban: 33. Parameter k = 5, dan model garis yang diperoleh Desmos mempunyai intersep-y sebesar 33."
+  },
+  "4becad44": {
+    "title":"Mengenali sistem dua garis yang tidak mempunyai solusi",
+    "explanation":"Sistem tanpa solusi direpresentasikan oleh dua garis yang sejajar tetapi berbeda. Artinya, kedua garis mempunyai kemiringan sama, tetapi intersep-y berbeda. Gambar kedua persamaan di Desmos untuk melihat pasangan yang sejajar serta tidak berimpit.",
+    "steps":[
+      {"title":"Gambarkan garis dari persamaan yang diberikan","text":"Masukkan persamaan awal. Desmos menampilkan garis dengan kemiringan 1/12 dan intersep-y 5/4.","expressions":["3x=36y-45","y=x/12+5/4"],"expected":"Garis awal memotong sumbu-y di 1.25."},
+      {"title":"Uji pilihan B pada grafik","text":"Pilihan B setara dengan y = x/12. Kedua grafik mempunyai kemiringan sama tetapi intersep-y berbeda, sehingga tidak berpotongan.","expressions":["y=x/12"],"expected":"Dua garis sejajar dan terpisah."},
+      {"title":"Bandingkan pilihan lain","text":"Pilihan A memiliki kemiringan berbeda sehingga berpotongan satu kali. Pilihan C membentuk garis yang sama dengan garis awal sehingga mempunyai tak terhingga titik persekutuan. Pilihan D memiliki kemiringan berbeda sehingga berpotongan satu kali."}
+    ],
+    "final":"Jawaban: B. Hanya pilihan B menghasilkan garis sejajar yang berbeda, sehingga sistem tidak mempunyai solusi."
+  },
+  "d1b66ae6": {
+    "title":"Mencari nilai y dari sistem persamaan linear",
+    "explanation":"Titik solusi adalah titik perpotongan dua garis. Dengan memasukkan kedua persamaan pada bidang Desmos, koordinat-y titik potong dapat dibaca secara langsung.",
+    "steps":[
+      {"title":"Gambarkan persamaan pertama","text":"Masukkan persamaan pertama apa adanya. Desmos akan menampilkan garis pertama.","expressions":["-x+y=-3.5"],"expected":"Garis pertama muncul."},
+      {"title":"Gambarkan persamaan kedua","text":"Masukkan persamaan kedua. Arahkan kursor pada titik perpotongan kedua grafik untuk membaca koordinatnya.","expressions":["x+3y=9.5"],"expected":"Titik potong berada di (5, 1.5)."},
+      {"title":"Ambil koordinat yang diminta","text":"Soal menanyakan nilai y, sehingga gunakan koordinat kedua dari titik potong tersebut.","expected":"y = 1.5 = 3/2."}
+    ],
+    "final":"Jawaban: 3/2 atau 1.5. Nilai y dibaca dari koordinat-y titik perpotongan grafik."
+  }
+}
