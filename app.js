@@ -104,7 +104,7 @@
     if (!bank.length) return;
     const q = question(), pos = visiblePosition(), attempt = state.attempts[q.id];
     E.number.textContent = 'Question ' + q.number + ' / ' + bank.length;
-    E.domainTag.textContent = q.domain; E.difficultyTag.textContent = q.difficulty;
+    E.domainTag.textContent = q.domain; E.difficulty.textContent = q.difficulty;
     E.skill.textContent = q.skill; E.id.textContent = 'ID: ' + q.id;
     E.page.textContent = 'PDF page ' + q.page;
     E.answerType.textContent = q.type === 'mcq' ? 'MULTIPLE CHOICE' : 'GRID-IN';
